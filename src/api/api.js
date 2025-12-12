@@ -16,3 +16,9 @@ export const createSnippet = async (snippet) => {
   });
   return res.json(); // returns the created snippet
 };
+// Get snippet by ID
+export const getSnippet = async (id) => {
+  const res = await fetch(`${API_URL}/${id}`);
+  return res.json();
+};
+
