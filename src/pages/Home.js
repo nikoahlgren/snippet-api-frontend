@@ -21,9 +21,10 @@ export default function Home() {
       <h1>Developer Knowledge Base</h1>
 
       <LanguageFilter onChange={load} />
-      <AddSnippet onCreated={load} />
-      <SnippetList snippets={snippets} />
 
+      <AddSnippet onCreated={load} />
+
+      <SnippetList snippets={snippets} />
     </div>
   );
 }
