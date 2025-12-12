@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ViewSnippet from "./pages/ViewSnippet";
 
 export default function App() {
-  const [selectedId, setSelectedId] = useState(null);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-  if (selectedId)
-    return (
-      <ViewSnippet id={selectedId} onBack={() => setSelectedId(null)} />
-    );
+        {/* IMPORTANT: must render a component, not an object */}
+        <Route path="/snippet/:id" element={<ViewSnippetWrapper />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
-  return <Home onSelectSnippet={setSelectedId} />;
+// Wrap ViewSnippet to pass the route params properly
+function ViewSnippetWrapper() {
+  const { id } = useParams();
+  return <ViewSnippet id={id} />;
 }
