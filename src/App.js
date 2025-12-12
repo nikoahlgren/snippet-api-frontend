@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ViewSnippet from "./pages/ViewSnippet";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+
 
 
 export default function App() {
