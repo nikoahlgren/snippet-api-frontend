@@ -1,70 +1,182 @@
-# Getting Started with Create React App
+# A full-stack web application for storing, browsing, and managing code snippets.
+## Built with:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend: Node.js + Express + MongoDB
 
-## Available Scripts
+Frontend: React (with hooks, syntax highlighting, filters, and CRUD features)
 
-In the project directory, you can run:
+Styling: Tailwind CSS (dark grey modern UI)
 
-### `npm start`
+Deployment: Render
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+🔹 Snippet Management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Add new snippets (title, language, description, code)
 
-### `npm test`
+Syntax-highlighted code preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Copy-to-clipboard function
 
-### `npm run build`
+View snippet details
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Filter by language
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Search snippets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Automatic data loading from backend on app load
 
-### `npm run eject`
+🔹 API Integration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The frontend uses all HTTP methods provided by the backend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Method	Purpose
+- GET /api/snippets	Fetch all snippets
+- GET /api/snippets/:id	Get a specific snippet
+- POST /api/snippets	Create a snippet
+- PUT /api/snippets/:id	Update a snippet
+- DELETE /api/snippets/:id	Delete a snippet
+- 
+## Technologies Used
+Frontend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+React (Hooks)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+React Router
 
-## Learn More
+Tailwind CSS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+react-syntax-highlighter
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Fetch API
 
-### Code Splitting
+Modern responsive UI with dark theme
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Backend
 
-### Analyzing the Bundle Size
+Node.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Express.js
 
-### Making a Progressive Web App
+MongoDB (Mongoose)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+CORS enabled
 
-### Advanced Configuration
+RESTful routing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Deployment
 
-### Deployment
+Render (Backend service)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Render (Static site hosting for frontend)
 
-### `npm run build` fails to minify
+## Project Structure
+snippet-frontend/
+│   README.md
+│   package.json
+│   .env (optional API URL)
+│
+├───src
+│   │   App.js
+│   │   index.js
+│   │   index.css
+│   │
+│   ├───api
+│   │       api.js
+│   │
+│   ├───components
+│   │       Navbar.jsx
+│   │       AddSnippet.jsx
+│       │   SnippetList.jsx
+│       │   SnippetCard.jsx
+│       │   LanguageFilter.js
+│   │
+│   └───pages
+│           Home.js
+│           ViewSnippet.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Getting Started (Local Development)
+1. Clone the frontend
+git clone https://github.com/your-username/snippet-frontend
+cd snippet-frontend
+
+2. Install dependencies
+npm install
+
+3. Start the development server
+npm start
+
+
+Your app will open at:
+
+http://localhost:3000
+
+## Environment Variables
+
+Create a .env file in /src or project root:
+
+REACT_APP_API_URL=https://your-backend-service.onrender.com/api/snippets
+
+
+Your api.js uses this:
+
+const API_URL = process.env.REACT_APP_API_URL;
+
+## Deployment
+Backend (Render)
+
+Create a new Web Service
+
+Connect your backend repo
+
+Environment: Node
+
+Build command:
+
+npm install
+
+
+Start command:
+
+node server.js
+
+
+Ensure it returns JSON at /api/snippets
+
+Frontend (Render Static Site)
+
+Create a Static Site
+
+Connect frontend repo
+
+Build command:
+
+npm run build
+
+
+Publish directory:
+
+build
+
+## Troubleshooting
+ "Unexpected token < … not valid JSON"
+
+Your API URL is wrong or backend is returning HTML instead of JSON.
+Check:
+
+REACT_APP_API_URL
+
+ Blank Screen on Load
+
+Bad export/import in a component
+
+Syntax error in JSX
+
+Missing default export
+
+ CORS Errors
+
+Add this to your backend:
+
+const cors = require("cors");
+app.use(cors());
