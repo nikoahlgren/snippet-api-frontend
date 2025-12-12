@@ -2,16 +2,7 @@ import React, { useState } from "react";
 import { createSnippet } from "../api/api";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-//test
-if (onCreated) onCreated();
-const submit = async (e) => {
-  e.preventDefault();
-  await createSnippet(form);
-  if (onCreated) {
-    onCreated();
-  }
-};
-//test end
+
 
 export default function AddSnippet({ onCreated }) {
   const [form, setForm] = useState({ title: "", language: "", code: "" });
