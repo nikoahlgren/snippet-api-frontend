@@ -7,7 +7,6 @@ export default function SnippetCard({ snippet }) {
   return (
     <div
       onClick={() => navigate(`/snippet/${snippet._id}`)}
-
       style={{
         padding: "12px",
         borderRadius: "8px",
