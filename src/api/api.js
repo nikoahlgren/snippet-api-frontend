@@ -1,4 +1,4 @@
-const API_URL = "https://snippet-api-bwcy.onrender.com";
+const API_URL = "https://snippet-api-bwcy.onrender.com/api/snippets";
 
 // GET SNIPPETS (optional language filter)
 export const getSnippets = async (lang) => {
