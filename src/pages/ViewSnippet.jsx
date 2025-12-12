@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { getSnippet } from "../api/api";
 
-export default function ViewSnippet() {
-  const { id } = useParams();
+export default function ViewSnippet({ id, onBack }) {
   const [snippet, setSnippet] = useState(null);
 
   useEffect(() => {
-    getSnippet(id).then(data => setSnippet(data));
+    load();
   }, [id]);
+
+  const load = async () => {
+    const data = await getSnippet(id);
+    setSnippet(data);
+  };
 
   if (!snippet) return <p>Loading...</p>;
 
   return (
     <div>
+      <button onClick={onBack}>Back</button>
       <h1>{snippet.title}</h1>
-      <p>{snippet.language}</p>
+      <p><strong>Language:</strong> {snippet.language}</p>
 
-      <pre>{snippet.code}</pre>
+      <pre style={{ background: "#222", padding: "1rem", borderRadius: "8px" }}>
+        {snippet.code}
+      </pre>
     </div>
   );
 }
