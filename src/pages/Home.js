@@ -23,6 +23,7 @@ export default function Home() {
       <LanguageFilter onChange={load} />
       <AddSnippet onCreated={load} />
       <SnippetList snippets={snippets} />
+
     </div>
   );
 }
