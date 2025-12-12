@@ -70,30 +70,7 @@ Render (Backend service)
 
 Render (Static site hosting for frontend)
 
-## Project Structure
-snippet-frontend/
-│   README.md
-│   package.json
-│   .env (optional API URL)
-│
-├───src
-│   │   App.js
-│   │   index.js
-│   │   index.css
-│   │
-│   ├───api
-│   │       api.js
-│   │
-│   ├───components
-│   │       Navbar.jsx
-│   │       AddSnippet.jsx
-│       │   SnippetList.jsx
-│       │   SnippetCard.jsx
-│       │   LanguageFilter.js
-│   │
-│   └───pages
-│           Home.js
-│           ViewSnippet.js
+
 
 ## Getting Started (Local Development)
 1. Clone the frontend
